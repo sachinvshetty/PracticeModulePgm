@@ -1,6 +1,5 @@
 package com.mascamo.dev.TestCases;
 
-import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 import org.testng.Assert;
@@ -14,42 +13,46 @@ import com.mascamo.dev.TestBase.TestBase;
 
 public class LoginPageTest extends TestBase {
 
-	public LoginPage LP;
-	public HomePage HP;
-	
+	public static LoginPage LP;
+	public static HomePage HP;
+
 	public LoginPageTest() {
 		super();
-		
 	}
-	
 
-	@BeforeClass()
+	@BeforeClass
 	public void setup() {
+
 		initialization();
 		LP = new LoginPage();
-
-	}
-	
-
-	// services
-	@Test
-	public void fblogodislaytest() {
-		boolean flag = LP.fblogodisplay();
-		Assert.assertTrue(flag);
+		HP =new HomePage();
 	}
 
-	@Test
-	public void fbpagelogintest() {
-		System.out.println(prop.getProperty("username"));
-		System.out.println(prop.getProperty("password"));
+	// services provided
+
+	@Test (priority=0)
+	public void fblogodisplaytest() {
+		boolean logocheck = LP.fblogodisplay();
+		Assert.assertTrue(logocheck);
+	}
+
+	@Test (priority=1)
+	public void validlogintest() {
+		HP =LP.validlogin(prop.getProperty("username"), prop.getProperty("password"));
 		
-		HP= LP.validlogin(prop.getProperty("username"),prop.getProperty("password"));
+
+	}
+
+	@Test (priority=2)
+	public void homepageloginprofiletest() {
+
+		String Expected_text = "Sachin Shetty";
+		Assert.assertEquals(HP.homepageloginprofile(), Expected_text);
 	}
 
 	@AfterClass
-	public void teardown() {
+	public void closebrowser() {
 		driver.quit();
-
 	}
 
 }

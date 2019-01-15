@@ -49,6 +49,42 @@
 				</plugins>
 			</build>
 </profile>
+<profile>
+			<id>group1Users</id>
+		<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>2.18.1</version>
+						<configuration>
+							<forkCount>0</forkCount>
+							<suiteXmlFiles>
+								<suiteXmlFile>group1users.xml</suiteXmlFile>
+							</suiteXmlFiles>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+</profile>
+<profile>
+			<id>group2Users</id>
+		<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>2.18.1</version>
+						<configuration>
+							<forkCount>0</forkCount>
+							<suiteXmlFiles>
+								<suiteXmlFile>group2users.xml</suiteXmlFile>
+							</suiteXmlFiles>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+</profile>
 	</profiles>
 
 	<dependencies>

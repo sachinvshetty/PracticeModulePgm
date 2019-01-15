@@ -2,9 +2,17 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite">
 	<test thread-count="5" name="AllUsers">
-	<classes>
-			<class name="com.mascamo.dev.TestCases.MavenUserTest"/>
-			<class name="com.mascamo.dev.TestCases.PremiumUserTest"/>
+		<groups>
+			<run>
+				<include name="group2"></include>
+			</run>
+
+		</groups>
+
+
+
+		<classes>
+			<class name="com.mascamo.dev.TestCases.MavenUserTest" />
 		</classes>
 	</test>
 </suite> 
